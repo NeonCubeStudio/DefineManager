@@ -20,23 +20,6 @@ namespace NeonCubeStudio.DefineManager
         private SerializedProperty m_IsApplied;
         private BuildTargetGroup m_CurrentTargetGroup;
 
-        private static class Styles
-		{
-			public static GUIStyle listContainer;
-            private static bool s_IsInitialized;
-
-			public static void Init()
-			{
-				if (s_IsInitialized)
-					return;
-				s_IsInitialized = true;
-				listContainer = new GUIStyle()
-				{
-					margin = new RectOffset(4, 4, 4, 4)
-				};
-			}
-		}
-
         private void OnEnable()
 		{
 			m_BuildTargetValues = (BuildTargetGroup[]) System.Enum.GetValues(typeof(BuildTargetGroup));
@@ -151,8 +134,6 @@ namespace NeonCubeStudio.DefineManager
 
 		public override void OnInspectorGUI()
 		{
-			Styles.Init();
-
 			serializedObject.Update();
 
 			Color oldColor = GUI.backgroundColor;
@@ -205,7 +186,7 @@ namespace NeonCubeStudio.DefineManager
 
 			EditorGUI.BeginChangeCheck();
 
-			GUILayout.BeginVertical(Styles.listContainer);
+			GUILayout.BeginVertical();
 
 			m_ReorderableList.DoLayoutList();
 			if (EditorGUI.EndChangeCheck())
