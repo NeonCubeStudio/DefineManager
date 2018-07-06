@@ -56,7 +56,7 @@ namespace NeonCubeStudio.DefineManager
 			}
 			else
 			{
-				var defs = GlobalDefineUtility.GetDefines((Compiler) m_Compiler.intValue);
+                string[] defs = GlobalDefineUtility.GetDefines((Compiler) m_Compiler.intValue);
 
 				m_Defines.arraySize = defs.Length;
 
@@ -73,7 +73,7 @@ namespace NeonCubeStudio.DefineManager
 			m_CurrentTargetGroup = target;
 			m_BuildTarget.intValue = (int) target;
 
-			var defs = GetScriptingDefineSymbols((BuildTargetGroup) m_BuildTarget.enumValueIndex);
+            string[] defs = GetScriptingDefineSymbols((BuildTargetGroup) m_BuildTarget.enumValueIndex);
 			m_Defines.arraySize = defs.Length;
 			for (int i = 0; i < defs.Length; i++)
 				m_Defines.GetArrayElementAtIndex(i).stringValue = defs[i];
@@ -109,7 +109,7 @@ namespace NeonCubeStudio.DefineManager
 
         private void OnDrawHeader(Rect rect)
 		{
-			var cur = ((Compiler) m_Compiler.intValue).ToString();
+			string cur = ((Compiler) m_Compiler.intValue).ToString();
 
 			if (m_Compiler.intValue == (int) Compiler.Platform)
 				cur += " " + ((BuildTargetGroup) (m_BuildTarget.intValue));
@@ -119,7 +119,7 @@ namespace NeonCubeStudio.DefineManager
 
         private void OnDrawListElement(Rect rect, int index, bool isactive, bool isfocused)
 		{
-			var element = m_ReorderableList.serializedProperty.GetArrayElementAtIndex(index);
+            SerializedProperty element = m_ReorderableList.serializedProperty.GetArrayElementAtIndex(index);
 
 			EditorGUIUtility.labelWidth = 4;
 			EditorGUI.PropertyField(new Rect(rect.x, rect.y + 2, rect.width, EditorGUIUtility.singleLineHeight), element);
@@ -168,7 +168,7 @@ namespace NeonCubeStudio.DefineManager
 
 			if (m_Compiler.intValue == (int) Compiler.Platform)
 			{
-				var cur = ((BuildTargetGroup) (m_BuildTarget.intValue));
+				BuildTargetGroup cur = ((BuildTargetGroup) (m_BuildTarget.intValue));
 
 				GUILayout.Space(3);
 

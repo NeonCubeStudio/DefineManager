@@ -57,7 +57,7 @@ namespace NeonCubeStudio.DefineManager
 			string[] lines = File.ReadAllLines(path);
 			List<string> defs = new List<string>();
 
-			foreach (var line in lines)
+			foreach (string line in lines)
 			{
 				if (line.StartsWith("-define:"))
 					defs.AddRange(line.Replace("-define:", "").Split(';'));
