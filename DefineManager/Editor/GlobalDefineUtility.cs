@@ -6,19 +6,19 @@ using System.Text;
 
 namespace NeonCubeStudio.DefineManager
 {
-	enum Compiler
+	public enum Compiler
 	{
 		CSharp = 0,
 		Editor = 1,
 		Platform = 2
 	}
 
-	static class GlobalDefineUtility
+	public static class GlobalDefineUtility
 	{
 		// http://forum.unity3d.com/threads/93901-global-define/page2
 		// Do not modify these paths
-		const string k_CSharpPath = "Assets/mcs.rsp";
-		const string k_EditorPath = "Assets/gmcs.rsp";
+		private const string k_CSharpPath = "Assets/mcs.rsp";
+		private const string k_EditorPath = "Assets/gmcs.rsp";
 
 		public static string[] GetDefines(Compiler compiler)
 		{

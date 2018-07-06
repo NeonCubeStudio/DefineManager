@@ -8,27 +8,27 @@ namespace NeonCubeStudio.DefineManager
 	public class ScriptingDefineWindow : EditorWindow
 	{
 		[MenuItem("Window/Platform Defines")]
-		static void Init()
+		public static void Init()
 		{
 			GetWindow<ScriptingDefineWindow>(true, "Platform Defines", true);
 		}
 
-		Editor m_Editor;
-		ScriptingDefineObject m_Asset;
+		private Editor m_Editor;
+		private ScriptingDefineObject m_Asset;
 
-		void OnEnable()
+		private void OnEnable()
 		{
 			m_Asset = ScriptableObject.CreateInstance<ScriptingDefineObject>();
 			m_Editor = Editor.CreateEditor(m_Asset);
 		}
 
-		void OnDisable()
+		private void OnDisable()
 		{
 			Object.DestroyImmediate(m_Editor);
 			Object.DestroyImmediate(m_Asset);
 		}
 
-		void OnGUI()
+		private void OnGUI()
 		{
 			m_Editor.OnInspectorGUI();
 		}

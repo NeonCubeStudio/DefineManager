@@ -12,15 +12,15 @@ namespace NeonCubeStudio.DefineManager
 	public class ScriptingDefineObject : ScriptableObject
 	{
 		[SerializeField]
-		Compiler m_Compiler;
+		private Compiler m_Compiler;
 
 		[SerializeField]
-		BuildTargetGroup m_BuildTarget;
+		private BuildTargetGroup m_BuildTarget;
 
 		[SerializeField]
-		string[] m_Defines;
+		private string[] m_Defines;
 
 		[SerializeField]
-		bool m_IsApplied;
+		private bool m_IsApplied;
 	}
 }

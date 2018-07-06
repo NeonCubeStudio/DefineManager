@@ -8,22 +8,22 @@ namespace NeonCubeStudio.DefineManager
 	[CustomEditor(typeof(ScriptingDefineObject))]
 	public class ScriptingDefineEditor : Editor
 	{
-		const int k_CompilerCount = 3;
-		ReorderableList m_ReorderableList;
+		private const int k_CompilerCount = 3;
+        private ReorderableList m_ReorderableList;
 
-		string[] m_BuildTargetDisplayNames;
-		BuildTargetGroup[] m_BuildTargetValues;
+        private string[] m_BuildTargetDisplayNames;
+        private BuildTargetGroup[] m_BuildTargetValues;
 
-		SerializedProperty m_Compiler;
-		SerializedProperty m_BuildTarget;
-		SerializedProperty m_Defines;
-		SerializedProperty m_IsApplied;
-		BuildTargetGroup m_CurrentTargetGroup;
+        private SerializedProperty m_Compiler;
+        private SerializedProperty m_BuildTarget;
+        private SerializedProperty m_Defines;
+        private SerializedProperty m_IsApplied;
+        private BuildTargetGroup m_CurrentTargetGroup;
 
-		static class Styles
+        private static class Styles
 		{
 			public static GUIStyle listContainer;
-			static bool s_IsInitialized;
+            private static bool s_IsInitialized;
 
 			public static void Init()
 			{
@@ -37,7 +37,7 @@ namespace NeonCubeStudio.DefineManager
 			}
 		}
 
-		void OnEnable()
+        private void OnEnable()
 		{
 			m_BuildTargetValues = (BuildTargetGroup[]) System.Enum.GetValues(typeof(BuildTargetGroup));
 			m_BuildTargetDisplayNames = m_BuildTargetValues.Select(x => x.ToString()).ToArray();
@@ -50,7 +50,7 @@ namespace NeonCubeStudio.DefineManager
 			m_ReorderableList.drawElementCallback += OnDrawListElement;
 		}
 
-		void OnDisable()
+        private void OnDisable()
 		{
 			if (!m_IsApplied.boolValue)
 			{
@@ -61,7 +61,7 @@ namespace NeonCubeStudio.DefineManager
 			}
 		}
 
-		void SetCompilerTarget(Compiler compiler)
+        private void SetCompilerTarget(Compiler compiler)
 		{
 			m_Compiler.intValue = (int) compiler;
 
@@ -91,7 +91,7 @@ namespace NeonCubeStudio.DefineManager
 			}
 		}
 
-		void SetBuildTarget(BuildTargetGroup target)
+        private void SetBuildTarget(BuildTargetGroup target)
 		{
 			m_CurrentTargetGroup = target;
 			m_BuildTarget.intValue = (int) target;
@@ -105,13 +105,13 @@ namespace NeonCubeStudio.DefineManager
 			serializedObject.ApplyModifiedProperties();
 		}
 
-		static string[] GetScriptingDefineSymbols(BuildTargetGroup group)
+        private string[] GetScriptingDefineSymbols(BuildTargetGroup group)
 		{
 			string res = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
 			return res.Split(';');
 		}
 
-		void ApplyDefines()
+        private void ApplyDefines()
 		{
 			string[] arr = new string[m_Defines.arraySize];
 
@@ -130,7 +130,7 @@ namespace NeonCubeStudio.DefineManager
 			GUI.FocusControl("");
 		}
 
-		void OnDrawHeader(Rect rect)
+        private void OnDrawHeader(Rect rect)
 		{
 			var cur = ((Compiler) m_Compiler.intValue).ToString();
 
@@ -140,7 +140,7 @@ namespace NeonCubeStudio.DefineManager
 			GUI.Label(rect, cur.ToString(), EditorStyles.boldLabel);
 		}
 
-		void OnDrawListElement(Rect rect, int index, bool isactive, bool isfocused)
+        private void OnDrawListElement(Rect rect, int index, bool isactive, bool isfocused)
 		{
 			var element = m_ReorderableList.serializedProperty.GetArrayElementAtIndex(index);
 
