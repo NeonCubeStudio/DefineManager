@@ -11,9 +11,6 @@ namespace NeonCubeStudio.DefineManager
 		private const int k_CompilerCount = 3;
         private ReorderableList m_ReorderableList;
 
-        private string[] m_BuildTargetDisplayNames;
-        private BuildTargetGroup[] m_BuildTargetValues;
-
         private SerializedProperty m_Compiler;
         private SerializedProperty m_BuildTarget;
         private SerializedProperty m_Defines;
@@ -22,9 +19,6 @@ namespace NeonCubeStudio.DefineManager
 
         private void OnEnable()
 		{
-			m_BuildTargetValues = (BuildTargetGroup[]) System.Enum.GetValues(typeof(BuildTargetGroup));
-			m_BuildTargetDisplayNames = m_BuildTargetValues.Select(x => x.ToString()).ToArray();
-
 			m_Compiler = serializedObject.FindProperty("m_Compiler");
 			SetCompilerTarget((Compiler) m_Compiler.intValue);
 
