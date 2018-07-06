@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Parabox.DefineManager
+namespace NeonCubeStudio.DefineManager
 {
 	[CustomEditor(typeof(ScriptingDefineObject))]
 	public class ScriptingDefineEditor : Editor

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Parabox.DefineManager
+namespace NeonCubeStudio.DefineManager
 {
 	public class ScriptingDefineWindow : EditorWindow
 	{
